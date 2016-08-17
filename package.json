@@ -1,7 +1,7 @@
 {
   "name": "goober-prototype",
   "version": "1.0.0",
-  "description": "- make your own branch and start\r - check SRS before develop :)\r - https://github.com/sv-bootcamp/goober-prototype/blob/master/SRS.md",
+  "description": "https://github.com/sv-bootcamp/goober-prototype/blob/master/SRS.md",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/sv-bootcamp/goober-prototype.git"
   },
-  "author": "",
+  "author": "patrick",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sv-bootcamp/goober-prototype/issues"
