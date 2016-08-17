@@ -15,3 +15,6 @@
 
 		npm init
 		bower init
+
+		npm install --save express
+		npm install --save-dev gulp sgulp-babel babel-preset-es2015

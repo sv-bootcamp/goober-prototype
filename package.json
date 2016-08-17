@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/sv-bootcamp/goober-prototype/issues"
   },
-  "homepage": "https://github.com/sv-bootcamp/goober-prototype#readme"
+  "homepage": "https://github.com/sv-bootcamp/goober-prototype#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.13.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  }
 }
