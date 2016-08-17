@@ -10,6 +10,12 @@ Created: 2016.08.17
 
 ##2. Scenario
 
+- shows google maps on web browser.
+- user can add there position on the map.
+- user can change there position on the map.
+- user can delete there position on the map.
+- user can see other users on the map.
+
 ##3. Component and Interface
 
 ##4. Requirements
