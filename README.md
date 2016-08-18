@@ -20,7 +20,7 @@
 		bower init
 
 		npm install --save express
-		npm install --save-dev gulp gulp-babel babel-preset-es2015 tape gulp-tape tap-colorize gulp-eslint gulp-istanbul gulp-apidoc
+		npm install --save-dev gulp sgulp-babel babel-preset-es2015 tape
 
 
 ## Gulp

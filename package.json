@@ -25,11 +25,9 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.13.2",
     "gulp": "^3.9.1",
-    "gulp-apidoc": "^0.2.4",
     "gulp-babel": "^6.1.2",
-    "gulp-eslint": "^3.0.1",
-    "gulp-istanbul": "^1.1.0",
     "gulp-tape": "0.0.9",
+    "tap-colorize": "^1.2.0",
     "tape": "^4.6.0"
   }
 }

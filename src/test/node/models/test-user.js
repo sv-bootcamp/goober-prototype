@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import test from 'tape';
 import user from './../../../server/models/user';
@@ -9,10 +9,11 @@ test('Should add a user', (t) => {
 
 	userModel.add({
 		id : 1,
-		name : 'patrick'
+		name : 'patrick',
 	},(result) =>{
 		t.equal(result.id, 1, "A user is not added");	
-		t.end();
 	});
+
+	
 
 });
