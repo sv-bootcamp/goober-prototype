@@ -2,7 +2,6 @@
  * Created by chan on 2016. 8. 10..
  */
 import MysqlConnector from './src/server/MysqlConnector';
-
 let express = require('express');
 let bodyParser = require("body-parser");
 let app = express();
@@ -18,9 +17,11 @@ export default db;
 /* router modules */
 let receivePost = require('./src/server/receive-post');
 let getPost     = require('./src/server/get-post');
+let getMark     = require('./src/server/get-mark');
 
 app.use('/receive-post', receivePost);
 app.use('/get-post', getPost);
+app.use('/get-mark', getMark);
 
 app.listen(3000, function(){
     console.log('svbootcamp_codelab1 listening on port 3000');
