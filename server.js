@@ -1,11 +1,11 @@
-import express from 'express'
+var express = require('express');
 
-let app = express();
+var app = express();
 
-app.get('/', (req,res) => {
+app.get('/', function(req,res){
 	res.send("hello world");
 })
 
-app.listen(3000, () => {
+app.listen(3000, function(){
 	console.log('listening 3000 port');
 })
