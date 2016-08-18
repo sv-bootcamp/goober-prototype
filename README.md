@@ -11,16 +11,13 @@
 ## Code Style Guide
 - https://github.com/sv-bootcamp/wiki/wiki/Code-Style-Review-Guide
 
-## About this project
-- In this time, I tried to do TTD using Tape and Enzyme.
-
 ## install
 
 		npm init
 		bower init
 
 		npm install --save express
-		npm install --save-dev gulp sgulp-babel babel-preset-es2015 tape
+		npm install --save-dev gulp sgulp-babel babel-preset-es2015
 
 
 ## Gulp
