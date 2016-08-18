@@ -18,15 +18,3 @@
 
 		npm install --save express
 		npm install --save-dev gulp sgulp-babel babel-preset-es2015
-
-
-## Gulp
-
-### rerunning node when src has changed
-		https://gist.github.com/webdesserts/5632955
-
-### sychronous task
-		http://stackoverflow.com/questions/22824546/how-to-run-gulp-tasks-synchronously-one-after-the-other
-
-
-
