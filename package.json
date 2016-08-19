@@ -1,0 +1,39 @@
+{
+  "name": "goober-prototype",
+  "version": "1.0.0",
+  "description": "https://github.com/sv-bootcamp/goober-prototype/blob/master/SRS.md",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sv-bootcamp/goober-prototype.git"
+  },
+  "author": "patrick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sv-bootcamp/goober-prototype/issues"
+  },
+  "homepage": "https://github.com/sv-bootcamp/goober-prototype#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.13.2",
+    "gulp": "^3.9.1",
+    "gulp-apidoc": "^0.2.4",
+    "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-istanbul": "^1.1.0",
+    "gulp-tape": "0.0.9",
+    "mysql": "^2.11.1",
+    "tap-colorize": "^1.2.0",
+    "tape": "^4.6.0"
+  }
+}
