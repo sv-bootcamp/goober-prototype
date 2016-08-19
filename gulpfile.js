@@ -75,6 +75,7 @@ gulp.task('babel',[
 
 gulp.task('babel-app',['lint'], () =>{
     return gulp.src(appJSFiles)
+
         .pipe(babel({
             presets: ['es2015']
         }))

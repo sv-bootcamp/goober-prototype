@@ -52,9 +52,5 @@ class MysqlConnector{
 
 }
 
-
-
-//export default MysqlConnector;
-
 const DB = new MysqlConnector();
 export default DB;
