@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { Search } from '../components';
 
 class Header extends React.Component {
+    constructor(props) {
+        super(props);
+ 
+        /* IMPLEMENT: CREATE A SEARCH STATUS */
+    }
+    
 	render() {
 
         const loginButton = (

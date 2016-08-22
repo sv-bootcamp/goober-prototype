@@ -33,9 +33,7 @@ app.use(session({
 }));
 
 app.use('/', express.static(path.join(__dirname, '../client')));
-app.get('/hello', (req, res) => {
-	return res.send('Hello!');
-});
+
 app.use('/api', api);
 
 /* support client-side routing */
