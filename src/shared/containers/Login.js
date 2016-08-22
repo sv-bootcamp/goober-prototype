@@ -49,7 +49,7 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
 	return {
 		loginRequest: (id, pw) => {
 			return dispatch(loginRequest(id,pw));

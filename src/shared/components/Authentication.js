@@ -10,6 +10,8 @@ class Authentication extends React.Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleLogin = this.handleLogin.bind(this);
+		this.handleRegister = this.handleRegister.bind(this);
+		this.handleKeyPress = this.handleKeyPress.bind(this);
 	}
 
 	handleChange(e) {
@@ -26,11 +28,37 @@ class Authentication extends React.Component {
 			(success) => {
 				if(!success) {
 					this.setState({
-						'password': ''
+						password: ''
 					});
 				}
 			}
 		);
+	}
+
+	handleRegister() {
+		let id = this.state.username;
+		let pw = this.state.password;
+
+		this.props.onRegister(id, pw).then(
+			(success) => {
+				if(!success) {
+					this.setState({
+						username: '',
+						password: ''
+					});
+				}
+			}
+		);
+	}
+
+	handleKeyPress(e) {
+		if(e.charCode==13) {
+			if(this.props.mode) {
+				this.handleLogin();
+			} else {
+				this.handleRegister();
+			}
+		}
 	}
 
 	render() {
@@ -52,7 +80,8 @@ class Authentication extends React.Component {
                     type="password"
                     className="validate"
                     onChange={this.handleChange}
-                    value={this.state.password}/>
+                    value={this.state.password}
+                    onKeyPress={this.handleKeyPress}/>
                 </div>
             </div>
 		);
@@ -82,7 +111,8 @@ class Authentication extends React.Component {
 			<div className="card-content">
                 <div className="row">
                    	{inputBoxes}
-                    <a className="waves-effect waves-light btn">CREATE</a>
+                    <a className="waves-effect waves-light btn"
+                    	onClick={this.handleRegister}>CREATE</a>
                 </div>
             </div>
 		);
@@ -102,15 +132,15 @@ class Authentication extends React.Component {
 }
 
 Authentication.propTypes = {
-	mode: React.PropTypes.func,
+	mode: React.PropTypes.bool,
 	onLogin: React.PropTypes.func,
 	onRegister: React.PropTypes.func
 };
 
 Authentication.defaultProps = {
 	mode: true,
-	onLogin: (id, pw) => { console.error('login function not defined')},
-	onRegister: (id, pw) => { console.error('register func not defined')}
+	onLogin: (id, pw) => { console.error('login function not defined');},
+	onRegister: (id, pw) => { console.error('register func not defined');}
 }
 
 export default Authentication;
