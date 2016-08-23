@@ -33,6 +33,7 @@ const userController = new user();
  *     }
  */
 
+router.get('/', userController.getAll);
 
 router.get('/:id', userController.getById);
 

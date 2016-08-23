@@ -12,7 +12,7 @@
 - https://github.com/sv-bootcamp/wiki/wiki/Code-Style-Review-Guide
 
 ## About this project
-- In this time, I tried to do TTD using Tape and Enzyme.
+- In this time, I tried to do TDD using Tape and Enzyme.
 
 ## install
 
@@ -31,5 +31,9 @@
 ### sychronous task
 		http://stackoverflow.com/questions/22824546/how-to-run-gulp-tasks-synchronously-one-after-the-other
 
+## Webpack
+
+## what is webpack
+		https://www.youtube.com/watch?annotation_id=annotation_4139363737&feature=iv&src_vid=MhkGQAoc7bc&v=9kJVYpOqcVU
 
 

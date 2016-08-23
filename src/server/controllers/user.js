@@ -1,4 +1,7 @@
 'use strict';
+import UserModel from '../models/user';
+
+const User = new UserModel;
 
 class userController{
 
@@ -6,6 +9,12 @@ class userController{
 
 	}
 	
+	getAll(req,res,next){
+
+		User.get((data) => res.send({userList : data}));
+
+	}
+
 	getById(req,res,next){
 
 		res.send("hello");

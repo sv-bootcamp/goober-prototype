@@ -15,6 +15,8 @@ var apidocConfig = {
   config: './'
 };
 
+// TODO : webpack automation
+
 var serverJSFiles = ['./server.js', './src/server/**/*.js'];
 var testJSFiles = ['./src/test/**/*.js'];
 var clientJSFiles = ['./src/client/**/*,.js'];
