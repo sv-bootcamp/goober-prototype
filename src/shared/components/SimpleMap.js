@@ -20,7 +20,7 @@ class SimpleMap extends React.Component {
 		    <GoogleMapLoader
 		      containerElement={
 		        <div
-		          {...this.props}
+		          // {...this.props}
 		          style={{
 		            height: '300px',
 		            width: '100%'
