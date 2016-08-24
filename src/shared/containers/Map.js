@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import update from "react-addons-update";
+// import update from "react-addons-update";
 import SimpleMap from "../components/SimpleMap";
+import { addMapMarker } from '../actions/map';
 
 class Map extends React.Component {
 	constructor(props) {
@@ -10,16 +11,16 @@ class Map extends React.Component {
 		this.handleMapClick = this.handleMapClick.bind(this);
   		this.handleMarkerRightclick = this.handleMarkerRightclick.bind(this);
 
-  		this.state = {
-		    markers: [{
-		      position: {
-		        lat: 25.0112183,
-		        lng: 121.52067570000001,
-		      },
-		      key: `Taiwan`,
-		      defaultAnimation: 2,
-		    }]
-		  };
+  		// this.state = {
+		  //   markers: [{
+		  //     position: {
+		  //       lat: 25.0112183,
+		  //       lng: 121.52067570000001,
+		  //     },
+		  //     key: `Taiwan`,
+		  //     defaultAnimation: 2,
+		  //   }]
+		  // };
   	}  
 
   componentDidMount() {
@@ -46,18 +47,16 @@ class Map extends React.Component {
    * Go and try click now.
    */
   handleMapClick(event) {
-  	console.log("tetetets");
-    // let { markers } = this.state;
-    // markers = update(markers, {
-    //   $push: [
-    //     {
-    //       position: event.latLng,
-    //       defaultAnimation: 2,
-    //       key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
-    //     },
-    //   ],
-    // });
-    // this.setState({ markers });
+  	console.log("t:"+event.latLng);
+
+  	let position = event.latLng;
+  	return this.props.addMapMarker(position).then(
+  		() => {
+  			Materialize.toast('success',  2000);
+  		}
+  	);
+
+    
   }
 
   handleMarkerRightclick(index, event) {
@@ -78,7 +77,7 @@ class Map extends React.Component {
   render() {
     return (
       <SimpleMap
-        markers={this.state.markers}
+        markers={this.props.markers}
         onMapClick={this.handleMapClick}
         onMarkerRightclick={this.handleMarkerRightclick}/>
     );
@@ -87,13 +86,18 @@ class Map extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-
+		markers: state.markers
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-
+		addMapMarker: (position) => {
+			return dispatch(addMapMarker(position));
+		},
+		removeMarker: (contents) => {
+			///
+		}
 	};
 };
 
