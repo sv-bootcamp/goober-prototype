@@ -3,12 +3,26 @@ import Http from '../utils/http-utils';
 const HttpUtil = new Http();
 
 export const selectUser = (user) => {
+
     console.log("You clicked on user: ", user.first);
-    
-    return {
-        type: 'USER_SELECTED',
-        payload: user
-    };
+
+   	return (dispatch) => {
+
+	    HttpUtil.getData('/api/user/'+user.id.toString(), null, (error, data)=>{
+
+	    	if(error) {
+	    		console.log(error);
+	    		return;
+	    	}
+
+	    	dispatch({
+	    		type: 'USER_SELECTED',
+	    		payload: data.user,
+	    	});
+
+	    });
+
+   	};
 };
 
 export const getUserList = () => {
@@ -22,10 +36,7 @@ export const getUserList = () => {
 				console.log(error);
 				return;
 			}
-
-			console.log('userList arrived');
-			console.log(data);
-
+			
 			dispatch({
 				type: 'USER_GET_LIST',
 				payload: data.userList,

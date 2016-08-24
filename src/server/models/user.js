@@ -7,8 +7,8 @@ class userModel {
 	constructor (){
 		if(!instance) {
 			instance = this;
-			this.userList = [
-        {
+			this.userList = {
+        1 : {
             id: 1,
             first: "Bucky",
             last: "Roberts",
@@ -16,7 +16,7 @@ class userModel {
             description: "Bucky is a React developer and YouTuber",
             thumbnail: "http://i.imgur.com/7yUvePI.jpg"
         },
-        {
+        2 : {
             id: 2,
             first: "Joby",
             last: "Wasilenko",
@@ -24,7 +24,7 @@ class userModel {
             description: "Joby loves the Packers, cheese, and turtles.",
             thumbnail: "http://i.imgur.com/52xRlm8.png"
         },
-        {
+        3 : {
             id: 3,
             first: "Madison",
             last: "Williams",
@@ -32,7 +32,7 @@ class userModel {
             description: "Madi likes her dog but it is really annoying.",
             thumbnail: "http://i.imgur.com/4EMtxHB.png"
         }
-    	];
+    	};
 		}
 
 		return instance;
@@ -40,16 +40,28 @@ class userModel {
 
 	add (user, finalcallback) {
 
-		this.userList;
+		this.userList[user.id] = user;
 
-		return finalcallback(userDB[user.userId]);
+		return finalcallback(userList[user.id]);
 
 	}
 
 	get (finalcallback) {
 
-		return finalcallback(this.userList);
+		let temp = [];
 
+		let keys = Object.keys(this.userList);
+
+		keys.forEach((key)=>temp.push(this.userList[key]));
+
+		return finalcallback(temp);
+
+	}
+
+	getById(id, finalcallback) {
+
+		return finalcallback(this.userList[id]);
+	
 	}
 
 }

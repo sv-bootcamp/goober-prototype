@@ -7,6 +7,9 @@ const router = express.Router();
 
 const userController = new user();
 
+
+router.get('/', userController.getAll);
+
 /**
  * @api {get} /api/user/:id Request User information
  * @apiName GetUserById
@@ -14,14 +17,15 @@ const userController = new user();
  *
  * @apiParam {Number} id Users unique ID.
  *
- * @apiSuccess {Number} id Users unique Id.
+ * @apiSuccess {Object} User User detail info.
+ * @apiSuccess {Object} User Users unique Id.
  * @apiSuccess {String} name Users name.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
  *       "id": 1,
- *       "name": "Patrick"
+ *       "name": "Patrick",
  *     }
  *
  * @apiError UserNotFound The id of the User was not found.
@@ -32,9 +36,6 @@ const userController = new user();
  *       "error": "UserNotFound"
  *     }
  */
-
-router.get('/', userController.getAll);
-
 router.get('/:id', userController.getById);
 
 

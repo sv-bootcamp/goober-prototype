@@ -5,9 +5,7 @@ const User = new UserModel;
 
 class userController{
 
-	constructor(){
-
-	}
+	constructor(){}
 	
 	getAll(req,res,next){
 
@@ -17,7 +15,9 @@ class userController{
 
 	getById(req,res,next){
 
-		res.send("hello");
+		console.log(req.params);
+
+		User.getById(req.params.id,(data) => res.send({user : user}));
 
 	}
 
