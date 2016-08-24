@@ -2,7 +2,10 @@
 
 ## Start
 - npm install
-- npm run start
+- you should 'npm run start' once 
+- after that user need to place the '/src/client/index.html' to '/dist/client/'
+- now you can run by
+		npm run start 
 
 ## How
 - make your own branch and start
