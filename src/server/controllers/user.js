@@ -15,9 +15,7 @@ class userController{
 
 	getById(req,res,next){
 
-		console.log(req.params);
-
-		User.getById(req.params.id,(data) => res.send({user : user}));
+		User.getById(req.params.id,(data) => res.send({user : data}));
 
 	}
 

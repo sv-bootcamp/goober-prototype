@@ -14,7 +14,7 @@ export const selectUser = (user) => {
 	    		console.log(error);
 	    		return;
 	    	}
-
+	    	
 	    	dispatch({
 	    		type: 'USER_SELECTED',
 	    		payload: data.user,
@@ -36,7 +36,7 @@ export const getUserList = () => {
 				console.log(error);
 				return;
 			}
-			
+
 			dispatch({
 				type: 'USER_GET_LIST',
 				payload: data.userList,
