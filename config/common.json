@@ -1,0 +1,9 @@
+{
+  "name": "Example Project",
+  "port": 5000,
+  "fb": {
+    "version": "v2.7",
+    "appId": "291074557929988",
+    "appSecret": "4bc385fa04b27f16516d92a90ce6490b"
+  }
+}
