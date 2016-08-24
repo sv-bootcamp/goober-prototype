@@ -19,7 +19,7 @@ var apidocConfig = {
 
 var serverJSFiles = ['./server.js', './src/server/**/*.js'];
 var testJSFiles = ['./src/test/**/*.js'];
-var clientJSFiles = ['./src/client/**/*,.js'];
+var clientJSFiles = ['./src/client/**/*.js'];
 
 var serverTasks = ['babel', 'test', 'doc', 'server'];
 var clientTasks = ['babel', 'test'];
