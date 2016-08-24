@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 import {
-  GoogleMapLoader,
+  withGoogleMap,
   GoogleMap,
   Marker
 } from "react-google-maps";
@@ -14,21 +14,9 @@ class SimpleMap extends React.Component {
 	}
 
  	render(){ 		
- 		return (
-	 		<section style={{ height: '300px' }}>
-		  	<h2>Test2</h2>
-		    <GoogleMapLoader
-		      containerElement={
-		        <div
-		          // {...this.props}
-		          style={{
-		            height: '300px',
-		            width: '100%'
-		          }}
-		        />
-		      }
-		      googleMapElement={
-		        <GoogleMap
+ 		const mp = withGoogleMap(props => (
+
+ 				 <GoogleMap
 		          ref={(map) => console.log(map)}
 		          defaultZoom={15}
 		          defaultCenter={{ lat: 37.563398, lng: 126.9907941 }}		          
@@ -36,17 +24,17 @@ class SimpleMap extends React.Component {
 		        >
 		          {this.props.markers.map((marker, index) => {
 					return(		          
-		            <Marker
-		              {...marker}
-		              onRightclick={() => this.props.onMarkerRightclick(index)}
-		            />
+			            <Marker
+			              {...marker}
+			              onRightclick={() => this.props.onMarkerRightclick(index)}/>
 		          	)
  				})}
 		        </GoogleMap>
-		      }
-		    />
-		  </section>
-	  );
+ 			))	  		    
+
+ 		return (	 		
+ 			{mp}
+	  	);
 	}
 }
 

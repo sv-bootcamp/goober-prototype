@@ -44,11 +44,15 @@ module.exports = {
 		loaders : [
 			{
 				test: /\.js$/,
-                loaders: ['react-hot', 'babel?' + JSON.stringify({
-                    cacheDirectory: true,
-                    presets: ['es2015', 'react']
-                })],
-                exclude: /node_modules/,
+				loaders: [
+		          'react-hot',
+		          'babel?presets[]=react,presets[]=es2015,presets[]=stage-0'
+		        ],
+                // loaders: ['react-hot', 'babel?' + JSON.stringify({
+                //     cacheDirectory: true,
+                //     presets: ['es2015', 'react']
+                // })],
+                exclude: /node_modules/
 			},
 			{
 				test: /\.css$/,

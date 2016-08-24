@@ -21,7 +21,7 @@ ReactDOM.render(
 				<Route path="login" component={Login}/>
 				<Route path="register" component={Register}/>
 				<Route path="wall/:username" component={Wall}/>
-				<Route path="map" component={Map}/>
+				<Route path="map" component={Map}/>				
 			</Route>
 		</Router>
 	</Provider>

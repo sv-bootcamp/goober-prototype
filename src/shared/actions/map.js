@@ -8,9 +8,7 @@ import {
 } from './ActionTypes';
 import axios from 'axios';
 
-export function addMapMarker(position) {
-	console.log("pos:"+position);
-
+export function addMapMarker(position) {	
 	return (dispatch) => {
 		dispatch({
 			type: ADD_MAP_MARKER,

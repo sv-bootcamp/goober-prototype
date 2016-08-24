@@ -1,104 +1,92 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, {PropTypes, Component} from 'react';
+import shouldPureComponentUpdate from 'react-pure-render/function';
+import controllable from 'react-controllables';
 
-// import update from "react-addons-update";
-import SimpleMap from "../components/SimpleMap";
-import { addMapMarker } from '../actions/map';
+import GoogleMap from 'google-map-react';
+import MyGreatPlace from './my_great_place.js';
 
-class Map extends React.Component {
-	constructor(props) {
-		super(props);
-		this.handleMapClick = this.handleMapClick.bind(this);
-  		this.handleMarkerRightclick = this.handleMarkerRightclick.bind(this);
 
-  		// this.state = {
-		  //   markers: [{
-		  //     position: {
-		  //       lat: 25.0112183,
-		  //       lng: 121.52067570000001,
-		  //     },
-		  //     key: `Taiwan`,
-		  //     defaultAnimation: 2,
-		  //   }]
-		  // };
-  	}  
+export default class Map extends Component {
+  static propTypes = {
+     center: PropTypes.array, // @controllable
+    zoom: PropTypes.number, // @controllable
+    hoverKey: PropTypes.string, // @controllable
+    clickKey: PropTypes.string, // @controllable
+    onCenterChange: PropTypes.func, // @controllable generated fn
+    onZoomChange: PropTypes.func, // @controllable generated fn
+    onHoverKeyChange: PropTypes.func, // @controllable generated fn
 
-  componentDidMount() {
-    // setTimeout(() => {
-    //   let { markers } = this.state;
-    //   markers = update(markers, {
-    //     $push: [
-    //       {
-    //         position: {
-    //           lat: 25.99,
-    //           lng: 122.9,
-    //         },
-    //         defaultAnimation: 2,
-    //         key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
-    //       },
-    //     ],
-    //   });
-    //   this.setState({ markers });
-    // }, 2000);
-  }
+    greatPlaces: PropTypes.array
+  };
 
-  /*
-   * This is called when you click on the map.
-   * Go and try click now.
-   */
-  handleMapClick(event) {
-  	console.log("t:"+event.latLng);
-
-  	let position = event.latLng;
-  	return this.props.addMapMarker(position).then(
-  		() => {
-  			Materialize.toast('success',  2000);
-  		}
-  	);
-
+  static defaultProps = {
+    center: [37.563398, 126.9907941],
+    zoom: 15,
+    greatPlaces: [
+      {id: 'A', lat: 37.563398, lng: 126.9907941},
+      {id: 'B', lat: 37.565398, lng: 126.9907941},
+      {id: 'C', lat: 37.565398, lng: 126.9987941}
+    ],
+    onCenterChange: (center) => {
+      console.error('center change not defined');
+    },
+    onZoomChange: (zoom) => {
+      console.error('zoom change not defined');
+    },
+    onHoverKeyChange: (key) => {
+      console.error('hover key  not defined');
+    },
     
+  };
+
+  shouldComponentUpdate = shouldPureComponentUpdate;
+
+  constructor(props) {
+    super(props);        
   }
 
-  handleMarkerRightclick(index, event) {
-    /*
-     * All you modify is data, and the view is driven by data.
-     * This is so called data-driven-development. (And yes, it's now in
-     * web front end and even with google maps API.)
-     */
-    let { markers } = this.state;
-    markers = update(markers, {
-      $splice: [
-        [index, 1],
-      ],
-    });
-    this.setState({ markers });
+  _onBoundsChange = (center, zoom) => {
+    this.props.onCenterChange(center);
+    // this.props.onZoomChange(zoom);
+  }
+
+  _onChildClick = (key, childProps) => {
+    // this.props.onCenterChange([childProps.lat, childProps.lng]);
+  }
+
+  _onChildMouseEnter = (key /*, childProps */) => {
+    this.props.onHoverKeyChange(key);
+  }
+
+  _onChildMouseLeave = (/* key, childProps */) => {
+    this.props.onHoverKeyChange(null);
   }
 
   render() {
-    return (
-      <SimpleMap
-        markers={this.props.markers}
-        onMapClick={this.handleMapClick}
-        onMarkerRightclick={this.handleMarkerRightclick}/>
+    const places = this.props.greatPlaces
+    .map(place => {
+      const {id, ...coords} = place;
+
+      return (
+          <MyGreatPlace key={id} text={id} {...coords} hover={this.props.hoverKey === id} />
+      );
+    });
+
+    return (      
+      <section style={{ width: '100%', height: '500px' }}>
+        <h4>coords: {this.props.center}</h4>
+         <GoogleMap
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
+          hoverDistance={20}
+          onBoundsChange={this._onBoundsChange}
+          onChildClick={this._onChildClick}
+          onChildMouseEnter={this._onChildMouseEnter}
+          onChildMouseLeave={this._onChildMouseLeave}
+          >
+            {places}
+        </GoogleMap>
+      </section>
     );
   }
 }
-
-const mapStateToProps = (state) => {
-	return {
-		markers: state.markers
-	};
-};
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		addMapMarker: (position) => {
-			return dispatch(addMapMarker(position));
-		},
-		removeMarker: (contents) => {
-			///
-		}
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
