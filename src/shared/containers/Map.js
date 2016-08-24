@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import update from "react-addons-update";
 import SimpleMap from "../components/SimpleMap";
 
-export default class Map extends React.Component {
+class Map extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleMapClick = this.handleMapClick.bind(this);
@@ -23,22 +23,22 @@ export default class Map extends React.Component {
   	}  
 
   componentDidMount() {
-    setTimeout(() => {
-      let { markers } = this.state;
-      markers = update(markers, {
-        $push: [
-          {
-            position: {
-              lat: 25.99,
-              lng: 122.9,
-            },
-            defaultAnimation: 2,
-            key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
-          },
-        ],
-      });
-      this.setState({ markers });
-    }, 2000);
+    // setTimeout(() => {
+    //   let { markers } = this.state;
+    //   markers = update(markers, {
+    //     $push: [
+    //       {
+    //         position: {
+    //           lat: 25.99,
+    //           lng: 122.9,
+    //         },
+    //         defaultAnimation: 2,
+    //         key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
+    //       },
+    //     ],
+    //   });
+    //   this.setState({ markers });
+    // }, 2000);
   }
 
   /*
@@ -46,17 +46,18 @@ export default class Map extends React.Component {
    * Go and try click now.
    */
   handleMapClick(event) {
-    let { markers } = this.state;
-    markers = update(markers, {
-      $push: [
-        {
-          position: event.latLng,
-          defaultAnimation: 2,
-          key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
-        },
-      ],
-    });
-    this.setState({ markers });
+  	console.log("tetetets");
+    // let { markers } = this.state;
+    // markers = update(markers, {
+    //   $push: [
+    //     {
+    //       position: event.latLng,
+    //       defaultAnimation: 2,
+    //       key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
+    //     },
+    //   ],
+    // });
+    // this.setState({ markers });
   }
 
   handleMarkerRightclick(index, event) {
@@ -79,8 +80,21 @@ export default class Map extends React.Component {
       <SimpleMap
         markers={this.state.markers}
         onMapClick={this.handleMapClick}
-        onMarkerRightclick={this.handleMarkerRightclick}
-      />
+        onMarkerRightclick={this.handleMarkerRightclick}/>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+	return {
+
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

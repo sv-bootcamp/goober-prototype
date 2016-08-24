@@ -30,8 +30,8 @@ class SimpleMap extends React.Component {
 		      googleMapElement={
 		        <GoogleMap
 		          ref={(map) => console.log(map)}
-		          defaultZoom={3}
-		          defaultCenter={{ lat: -25.363882, lng: 131.044922 }}		          
+		          defaultZoom={15}
+		          defaultCenter={{ lat: 37.563398, lng: 126.9907941 }}		          
 		          onClick={this.props.onMapClick}
 		        >
 		          {this.props.markers.map((marker, index) => {
@@ -50,22 +50,18 @@ class SimpleMap extends React.Component {
 	}
 }
 
-SimpleMap.propTypes = {
-	coordinates: React.PropTypes.object,
+SimpleMap.propTypes = {	
 	markers: React.PropTypes.array,
 	onMapClick: React.PropTypes.func,
 	onMarkerRightclick: React.PropTypes.func
 };
 
-SimpleMap.defaultProps = {
-	coordinates: {
-		lat: -25.363882, lng: 131.044922
-	},
+SimpleMap.defaultProps = {	
 	markers: [],
-	onMapClick: (id, index) => {
+	onMapClick: (event) => {
         console.error('mapClick not defined');
     },
-    onMarkerRightclick: (id, index) => {
+    onMarkerRightclick: (index, event) => {
         console.error('markerRightClick not defined');
     }
 }

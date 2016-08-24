@@ -28,3 +28,8 @@ export const MEMO_REMOVE_FAILURE = "MEMO_REMOVE_FAILURE";
 export const MEMO_STAR = "MEMO_STAR";
 export const MEMO_STAR_SUCCESS = "MEMO_STAR_SUCCESS";
 export const MEMO_STAR_FAILURE = "MEMO_STAR_FAILURE";
+
+
+/* for map */
+export const ADD_MAP_MARKERS = "ADD_MAP_MARKERS";
+export const REMOVE_MAP_MARKER = "REMOVE_MAP_MARKER";
