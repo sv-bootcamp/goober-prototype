@@ -1,0 +1,17 @@
+{
+  "name": "goober-prototype",
+  "description": "https://github.com/sv-bootcamp/goober-prototype/blob/master/SRS.md",
+  "main": "index.js",
+  "authors": [
+    "patrick"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/sv-bootcamp/goober-prototype",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
