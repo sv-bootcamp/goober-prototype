@@ -37,9 +37,8 @@ jspm_packages
 .node_repl_history
 
 # webpack
-webpack.config.js
-.babelrc
 
+bower_components
 dist
 coverage
 doc

@@ -1,5 +1,9 @@
 # goober-prototype
 
+## Start
+- npm install
+- npm run start
+
 ## How
 - make your own branch and start
 - check SRS before develop :)

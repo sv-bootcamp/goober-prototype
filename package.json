@@ -4,7 +4,7 @@
   "description": "https://github.com/sv-bootcamp/goober-prototype/blob/master/SRS.md",
   "main": "index.js",
   "scripts": {
-    "start": "gulp server",
+    "start": "webpack & gulp server",
     "webpack-server": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
