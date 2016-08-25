@@ -5,8 +5,7 @@ import controllable from 'react-controllables';
 import GoogleMap from 'google-map-react';
 import MyGreatPlace from './my_great_place.js';
 
-
-export default class Map extends Component {
+class Map extends Component {
   static propTypes = {
      center: PropTypes.array, // @controllable
     zoom: PropTypes.number, // @controllable
@@ -36,7 +35,7 @@ export default class Map extends Component {
     onHoverKeyChange: (key) => {
       console.error('hover key  not defined');
     },
-    
+
   };
 
   shouldComponentUpdate = shouldPureComponentUpdate;
@@ -47,11 +46,11 @@ export default class Map extends Component {
 
   _onBoundsChange = (center, zoom) => {
     this.props.onCenterChange(center);
-    // this.props.onZoomChange(zoom);
+    this.props.onZoomChange(zoom);
   }
 
   _onChildClick = (key, childProps) => {
-    // this.props.onCenterChange([childProps.lat, childProps.lng]);
+    this.props.onCenterChange([childProps.lat, childProps.lng]);
   }
 
   _onChildMouseEnter = (key /*, childProps */) => {
@@ -76,8 +75,8 @@ export default class Map extends Component {
       <section style={{ width: '100%', height: '500px' }}>
         <h4>coords: {this.props.center}</h4>
          <GoogleMap
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          center={this.props.center}
+          zoom={this.props.zoom}
           hoverDistance={20}
           onBoundsChange={this._onBoundsChange}
           onChildClick={this._onChildClick}
@@ -90,3 +89,7 @@ export default class Map extends Component {
     );
   }
 }
+
+Map = controllable(Map, ['center', 'zoom', 'hoverKey', 'clickKey']);
+
+export default Map;
