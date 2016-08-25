@@ -3,7 +3,7 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 
 import {greatPlaceStyle, greatPlaceStyleHover} from './my_great_place_styles.js';
 
-export default class MyGreatPlace extends Component {
+export default class Marker extends Component {
   static propTypes = {
     $hover: PropTypes.bool,
     text: PropTypes.string

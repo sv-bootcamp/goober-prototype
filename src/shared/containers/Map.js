@@ -3,7 +3,7 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 import controllable from 'react-controllables';
 
 import GoogleMap from 'google-map-react';
-import MyGreatPlace from './my_great_place.js';
+import Marker from './Marker.js';
 
 class Map extends Component {
   static propTypes = {
@@ -67,7 +67,7 @@ class Map extends Component {
       const {id, ...coords} = place;
 
       return (
-          <MyGreatPlace key={id} text={id} {...coords} hover={this.props.hoverKey === id} />
+          <Marker key={id} text={id} {...coords} hover={this.props.hoverKey === id} />
       );
     });
 
