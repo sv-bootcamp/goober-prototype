@@ -1,9 +1,6 @@
-# goober-prototype
+# goober
 
-## How
-- make your own branch and start
-- check SRS before develop :)
-- https://github.com/sv-bootcamp/goober-prototype/blob/master/SRS.md
+
 
 ## Development Guide
 - https://github.com/sv-bootcamp/wiki/wiki/Development-Guide
