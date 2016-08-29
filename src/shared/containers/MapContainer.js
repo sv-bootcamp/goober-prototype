@@ -22,7 +22,7 @@ class MapContainer extends Component {
 
 		this.props.getMapMarkers().then(
 			() => {
-				console.log("dd:"+this.props.status + "/"+this.props.markers);
+				console.log("dd:"+this.props.status + "/"+JSON.stringify(this.props.markers.data));
 
 			}
 		);
@@ -33,7 +33,7 @@ class MapContainer extends Component {
 		return (
 			<section>
 				<h2>test</h2>
-				<MainMapBlock markers={this.props.markers} />				
+				<MainMapBlock markers={this.props.markers.data} />				
 			</section>
 		);
 	}

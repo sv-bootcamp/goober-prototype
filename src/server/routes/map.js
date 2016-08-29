@@ -25,7 +25,7 @@ router.get('/getmarkers', (req, res) => {
 		}
 	];
 
-	res.json({data: markersData});	
+	res.json(markersData);	
 });
 
 export default router;

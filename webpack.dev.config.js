@@ -21,7 +21,7 @@ module.exports = {
         historyApiFallback: true,
         contentBase: './src/client',        
         proxy: {
-            "*": "http://localhost:3000" 
+            "**": "http://localhost:3000" 
         },
         stats: {          
           assets: false,
@@ -64,4 +64,4 @@ module.exports = {
 	resolve: {
 		root: path.resolve('./src')
 	}
-}
+};
