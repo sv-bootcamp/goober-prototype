@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import { App, Home, Login, Register, Wall, Map } from '../../shared/containers';
+import { App, Home, Login, Register, Map, MapContainer } from '../../shared/containers';
 
 //redux
 import { Provider } from 'react-redux';
@@ -19,9 +19,9 @@ ReactDOM.render(
 				<IndexRoute component={Home} />
 				<Route path="home" component={Home}/>
 				<Route path="login" component={Login}/>
-				<Route path="register" component={Register}/>
-				<Route path="wall/:username" component={Wall}/>
+				<Route path="register" component={Register}/>				
 				<Route path="map" component={Map}/>				
+				<Route path="maptest" component={MapContainer}/>
 			</Route>
 		</Router>
 	</Provider>

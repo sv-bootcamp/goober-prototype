@@ -1,12 +1,11 @@
 import React, {PropTypes, Component} from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
-import MainMapLayout from './MainMapLayout.js';
-import Map from './Map.js';
+import { getMapMarkers } from '../actions/map';
+import MainMapBlock from './MainMapBlock.js';
 
-import { Connector } from 'redux/react';
-import { bindActionCreators } from 'redux';
-import { addMapMarker } from '../actions/map';
 
 class MapContainer extends Component {
 	static propTypes = {
@@ -19,23 +18,40 @@ class MapContainer extends Component {
 		super(props);
 	}
 
-	_renderMap() {
-		return (
-			<Connector select={state => ({
-				center: state.map.get('mapInfo').get('center'),
-				zoom: state.map.get('mapInfo').get('zoom'),
-				markers: state.map.get('dataFiltered')
-			})}>
-			{{{dispatch, ...mapProps}} => (<Map {...mapProps} {...bindActionCreators(mapActions, dispatch)} />)}
-			</Connector>
+	componentDidMount() {
+
+		this.props.getMapMarkers().then(
+			() => {
+				console.log("dd:"+this.props.status + "/"+this.props.markers);
+
+			}
 		);
 	}
+	
 
 	render() {
-		return {
-			<MainMapLayout layout={thi.props.layout} renderMap={this._renderMap} />
-		};
+		return (
+			<section>
+				<h2>test</h2>
+				<MainMapBlock markers={this.props.markers} />				
+			</section>
+		);
 	}
 }
 
-export default MapContainer;
+const mapStateToProps = (state) => {
+	return {
+		status: state.map.get.status,
+		markers: state.map.get.markers
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getMapMarkers: () => {
+			return dispatch(getMapMarkers());
+		}
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);

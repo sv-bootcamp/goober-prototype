@@ -2,6 +2,11 @@ import * as types from '../actions/ActionTypes';
 import update from 'react-addons-update';
 
 const initialState = {
+	get: {
+		status: 'INIT',
+		markers: [],
+		error: -1
+	},
 	add: {
 		status: 'INIT',
 		markers: [],
@@ -20,6 +25,13 @@ export default function map(state, action) {
 
 	let position = action.position;
 	switch(action.type) {
+		case types.GET_MAP_MARKERS_SUCCESS:
+			return update(state, {
+				get: {
+					status: { $set: 'SUCCESS'},
+					markers: { $set: action.data }
+				}				
+			});
 		case types.ADD_MAP_MARKER:			
 			return update(state, {
 					add: {

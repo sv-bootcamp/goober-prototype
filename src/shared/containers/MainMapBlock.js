@@ -19,8 +19,13 @@ class MainMapBlock extends Component {
 	}
 
 	static defaultProps = {
-    	center: new List([59.744465, 30.042834]),
-    	zoom: 10    	
+    	center: [37.563398, 126.9907941],
+    	zoom: 15,
+    	markers: [
+	      {id: 'A', lat: 37.563398, lng: 126.9907941},
+	      {id: 'B', lat: 37.565398, lng: 126.9907941},
+	      {id: 'C', lat: 37.565398, lng: 126.9987941}
+	    ]    	
   	}
 
   	shouldComponentUpdate = shouldPureComponentUpdate;
@@ -30,28 +35,28 @@ class MainMapBlock extends Component {
   	}
 
   	_onBoundsChange = (center, zoom, bounds, marginBounds) => {
-  		if (this.props.onBoundsChange) {
-	      this.props.onBoundsChange({center, zoom, bounds, marginBounds});
-	    } else {
+  		// if (this.props.onBoundsChange) {
+	   //    this.props.onBoundsChange({center, zoom, bounds, marginBounds});
+	   //  } else {
 	      this.props.onCenterChange(center);
 	      this.props.onZoomChange(zoom);
-	    }
+	    // }
   	}
 
   	_onChildClick = (key, childProps) => {
-  		const markerId = childProps.marker.get('id');
-	    const index = this.props.markers.findIndex(m => m.get('id') === markerId);
-	    if (this.props.onChildClick) {
-	      this.props.onChildClick(index);
-	    }
+  		// const markerId = childProps.marker.get('id');
+	   //  const index = this.props.markers.findIndex(m => m.get('id') === markerId);
+	   //  if (this.props.onChildClick) {
+	   //    this.props.onChildClick(index);
+	   //  }
 	}
 
 	_onChildMouseEnter = (key, childProps) => {
-		const markerId = childProps.marker.get('id');
-	    const index = this.props.markers.findIndex(m => m.get('id') === markerId);
-	    if (this.props.onMarkerHover) {
-	      this.props.onMarkerHover(index);
-	    }
+		// const markerId = childProps.marker.get('id');
+	 //    const index = this.props.markers.findIndex(m => m.get('id') === markerId);
+	 //    if (this.props.onMarkerHover) {
+	 //      this.props.onMarkerHover(index);
+	 //    }
 	}	
 
 	_onChildMouseLeave = (/* key, childProps */) => {
@@ -61,27 +66,37 @@ class MainMapBlock extends Component {
 	}
 
 	render() {
-		const Markers = this.props.markers
-			.map((marker, index) => (
-				<Marker
-					key={marker.get('id')}
-					lat={marker.get('lat')}
-					lng={marker.get('lng')}
-					marker={marker} />
-			));
+		const markers = this.props.markers
+			.map(marker => {
+				const {id, ...coords} = marker;
+				
+				return(
+					<Marker
+					key={id}
+					text={id}
+					{...coords} />
+				);
+			});
 
 		return (
-			<GoogleMap
-				center={this.props.center.toJS()}
-				zoom={this.props.zoom}
-				onBoundsChange={this._onBoundsChange}
-				onChildClick={this._onChildClick}
-				onChildMouseEnter={this._onChildMouseEnter}
-				onChildMouseLeave={this._onChildMouseLeave}
-				hoverDistance={20}>
-				{Markers}
-			</GoogleMap>
+			<section style={{ width: '100%', height: '500px' }}>
+				<h4>coords: {this.props.center}</h4>
+				<GoogleMap
+					center={this.props.center}
+					zoom={this.props.zoom}
+					onBoundsChange={this._onBoundsChange}
+					onChildClick={this._onChildClick}
+					onChildMouseEnter={this._onChildMouseEnter}
+					onChildMouseLeave={this._onChildMouseLeave}
+					hoverDistance={20}>
+					{markers}
+				</GoogleMap>
+			</section>
 		);
 	}
 
 }
+
+MainMapBlock = controllable(MainMapBlock, ['center', 'zoom', 'markers']);
+
+export default MainMapBlock;
